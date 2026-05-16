@@ -1,0 +1,5 @@
+name: astrbot_plugin_token_display
+desc: 在 LLM 回复末尾显示 Token 消耗统计，支持开关指令和白名单
+version: v1.1
+author: Logan
+repo: 

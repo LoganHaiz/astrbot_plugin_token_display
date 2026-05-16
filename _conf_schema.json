@@ -1,0 +1,68 @@
+{
+  "whitelist": {
+    "type": "list",
+    "description": "白名单（QQ号或群号），对群聊和私聊均生效",
+    "hint": "群聊时检查群号是否在白名单中，私聊时检查发送者QQ号是否在白名单中。留空则全部可用。",
+    "default": []
+  },
+  "show_input_tokens": {
+    "type": "bool",
+    "description": "是否显示 token 输入块",
+    "hint": "开启后显示输入 token 数量（如 ↑1234）。",
+    "default": true
+  },
+  "show_output_tokens": {
+    "type": "bool",
+    "description": "是否显示 token 输出块",
+    "hint": "开启后显示输出 token 数量（如 ↓567）。",
+    "default": true
+  },
+  "show_total_tokens": {
+    "type": "bool",
+    "description": "是否显示 token 总量块",
+    "hint": "开启后显示总 token 数量。",
+    "default": true
+  },
+  "input_token_display_mode": {
+    "type": "string",
+    "description": "输入 token 显示模式",
+    "hint": "total_only: 只显示总输入 token。cached_split: 显示为 ↑cached:800 other:434。full_detail: 显示为 ↑1234 (cached:800 other:434)。",
+    "default": "total_only"
+  },
+  "split_token_message": {
+    "type": "bool",
+    "description": "是否将 token 信息与原回复内容分段",
+    "hint": "开启后在 token 信息前插入换行符，使其与原回复内容分离显示。",
+    "default": false
+  },
+  "enable_billing": {
+    "type": "bool",
+    "description": "是否启用计费显示",
+    "hint": "开启后根据 token 使用量和价格计算并显示费用。",
+    "default": false
+  },
+  "input_price_per_1m_tokens": {
+    "type": "float",
+    "description": "每百万输入 token 价格（美元）",
+    "hint": "例如 GPT-4o 输入价格约为 $2.50/1M tokens。",
+    "default": 0.0
+  },
+  "output_price_per_1m_tokens": {
+    "type": "float",
+    "description": "每百万输出 token 价格（美元）",
+    "hint": "例如 GPT-4o 输出价格约为 $10.00/1M tokens。",
+    "default": 0.0
+  },
+  "cached_input_price_per_1m_tokens": {
+    "type": "float",
+    "description": "每百万缓存输入 token 价格（美元）",
+    "hint": "例如 GPT-4o 缓存输入价格约为 $1.25/1M tokens。",
+    "default": 0.0
+  },
+  "billing_display_mode": {
+    "type": "string",
+    "description": "计费显示模式",
+    "hint": "append: 计费信息追加在 token 信息之后。replace: 只显示计费信息，不显示 token。",
+    "default": "append"
+  }
+}
