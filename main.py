@@ -198,8 +198,23 @@ class TokenDisplayPlugin(Star):
         accumulated["total"] += self._get_usage_attr(
             usage, ["total_tokens", "total"]
         )
-        accumulated["cached_input"] += self._get_usage_attr(
-            usage, ["cached_input_tokens"]
+
+        # cached: 尝试多种属性名 + nested prompt_tokens_details
+        cached_val = self._get_usage_attr(usage, [
+            "input_cached", "cached_input_tokens", "cached_tokens"
+        ])
+        if cached_val == 0:
+            # 尝试从 prompt_tokens_details 获取 cached_tokens
+            ptd = getattr(usage, "prompt_tokens_details", None)
+            if ptd:
+                cached_val = int(getattr(ptd, "cached_tokens", 0) or 0)
+        accumulated["cached_input"] += cached_val
+
+        logger.debug(
+            f"[TokenDisplay] usage input={accumulated['input']} "
+            f"output={accumulated['output']} total={accumulated['total']} "
+            f"cached={accumulated['cached_input']} "
+            f"(raw: input_cached={getattr(usage,'input_cached','?')})"
         )
 
     # ------------------------------------------------------------------
